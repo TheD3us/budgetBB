@@ -5,16 +5,22 @@ public class ObjetPourBebe {
 	private int id;
 	private String nom;
 	private Type type;
+	private int valeur;
 	
+
 	public ObjetPourBebe() {
 		super();
 	}
-	public ObjetPourBebe(int id, String nom, Type type) {
+	
+	public ObjetPourBebe(int id, String nom, Type type, int valeur) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.type = type;
+		this.valeur = valeur;
 	}
+
+	
 	public int getId() {
 		return id;
 	}
@@ -32,5 +38,11 @@ public class ObjetPourBebe {
 	}
 	public void setType(Type type) {
 		this.type = type;
+	}
+	public int getValeur() {
+		return valeur;
+	}
+	public void setValeur(int valeur) {
+		this.valeur = valeur;
 	}
 }
