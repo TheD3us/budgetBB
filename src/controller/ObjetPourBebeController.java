@@ -3,6 +3,7 @@ package controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -61,4 +62,12 @@ public class ObjetPourBebeController {
 											objetBebe.update(objetPourBebe);
 											
 											}
+	
+	@DELETE @Path("/{ cle : \\d+}")
+	public void supprimerObjetBebe(@PathParam("cle") int id)
+	{
+		objetBebe= new ObjetPourBebeBll();	
+		objetBebe.delete(id);
+	}
+	
 }
