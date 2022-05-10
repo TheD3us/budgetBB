@@ -1,26 +1,48 @@
 package bo;
 
+import java.time.LocalDate;
+
 public class ObjetPourBebe {
 
 	private int id;
 	private String nom;
 	private Type type;
-	private int valeur;
+	private double valeur;
+	private LocalDate dateCreation;
+	private LocalDate dateModification;
 	
 
 	public ObjetPourBebe() {
 		super();
 	}
 	
-	public ObjetPourBebe(int id, String nom, Type type, int valeur) {
+	
+
+	
+	public ObjetPourBebe(String nom, Type type, double valeur, LocalDate dateModification) {
 		super();
-		this.id = id;
 		this.nom = nom;
 		this.type = type;
 		this.valeur = valeur;
+		this.dateModification = dateModification;
 	}
 
-	
+
+
+
+	public ObjetPourBebe(String nom, Type type, double valeur, LocalDate dateCreation,
+			LocalDate dateModification) {
+		super();
+		this.nom = nom;
+		this.type = type;
+		this.valeur = valeur;
+		this.dateCreation = dateCreation;
+		this.dateModification = dateModification;
+	}
+
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -39,10 +61,28 @@ public class ObjetPourBebe {
 	public void setType(Type type) {
 		this.type = type;
 	}
-	public int getValeur() {
+	public double getValeur() {
 		return valeur;
 	}
-	public void setValeur(int valeur) {
+	public void setValeur(double valeur) {
 		this.valeur = valeur;
 	}
+
+	public LocalDate getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(LocalDate dateCreation) {
+		this.dateCreation = dateCreation;
+	}
+
+	public LocalDate getDateModification() {
+		return dateModification;
+	}
+
+	public void setDateModification(LocalDate dateModification) {
+		this.dateModification = dateModification;
+	}
+	
+	
 }
