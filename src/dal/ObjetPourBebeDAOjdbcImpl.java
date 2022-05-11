@@ -97,6 +97,7 @@ public class ObjetPourBebeDAOjdbcImpl implements ObjetDAO {
 						trouve = true;
 					}	
 				}
+				// Sinon on créer le type
 				if(trouve == false)
 				{
 					PreparedStatement ps = cnx.prepareStatement("INSERT INTO type (nom) VALUES (?);", PreparedStatement.RETURN_GENERATED_KEYS);
@@ -154,6 +155,7 @@ public class ObjetPourBebeDAOjdbcImpl implements ObjetDAO {
 							trouve = true;
 						}	
 					}
+					// Sinon on créer le type
 					if(trouve == false)
 					{
 						PreparedStatement ps = cnx.prepareStatement("INSERT INTO type (nom) VALUES (?);", PreparedStatement.RETURN_GENERATED_KEYS);

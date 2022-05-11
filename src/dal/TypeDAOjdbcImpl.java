@@ -33,15 +33,17 @@ public class TypeDAOjdbcImpl implements TypeDAO {
 
 	@Override
 	public List<Type> selectAll() {
-		Type type = new Type();
+		
 		List<Type> listType = new ArrayList<Type>();
 		Connection cnx = ConnectionProvider.getConnection();
 		try {
 			PreparedStatement ps = cnx.prepareStatement("SELECT * FROM type;");
 			ResultSet rs = ps.executeQuery();
 			while(rs.next() != false) {
+				Type type = new Type();
 				type.setId(rs.getInt("id"));
 				type.setNom(rs.getString("nom"));
+				
 				
 				listType.add(type);
 			}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/appelObjet.js"></script>
+<meta charset="ISO-8859-1">
+<title>Budget Bébé</title>
+</head>
+<body onload="chargerObjetBebe();chargerType()">
+	<div id="ObjetBebeContainer">
+	
+	</div>
+	
+	<div>
+		<input type="text" id="nom_objet" placeholder="Nom Objet"/>
+		<select name="type" id="typeSelect">
+		<option value="default">Autre</option>
+		</select>
+		<input type="number" id="valeur" placeholder="Valeur Objet">
+		<input type="button" value="Ajouter" onclick="ajouterObjetBebe()"/>
+	</div>
+</body>
+</html>
