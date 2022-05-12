@@ -29,17 +29,24 @@ function chargerType(){
 				
 				remplirListeType(container, contenuReponse[i]);
 		}
+			var divOption = document.createElement('option');
+			var divInput = document.createElement('input');
+			divInput.type="text";
+			divInput.placeholder="Nouveau Type";
+			divOption.appendChild(divInput);
+			divOption.value = divInput.value;
+			container.appendChild(divOption);
 	}
 }
 	request.open("GET", "http://localhost:8080/BudgetBB/budgetBB/types", true);
 	request.send();
 }
 
+
 function remplirListeType(container, type){
 	var divOption = document.createElement('option');
 	divOption.value = type.nom;
 	divOption.innerText = type.nom;
-	//divOption.setAttribute("id", "option" + type.nom)
 	container.appendChild(divOption);
 }
 
@@ -53,7 +60,8 @@ function afficherObjetBebe(container, objet) {
 	var pDateModification = document.createElement("p");
 	
 	pNomObjet.innerText = objet.nom;
-	pType.innerText = objet.type.nom;
+
+	
 	pValeurObjet.innerText = objet.valeur + " euros";
 	pDateCreation.innerText =  objet.dateCreation.dayOfMonth+ " " + objet.dateCreation.month + " " + objet.dateCreation.year ;
 	pDateModification.innerText = objet.dateModification.dayOfMonth + " " + objet.dateModification.month + " " + objet.dateModification.year;
@@ -62,7 +70,11 @@ function afficherObjetBebe(container, objet) {
 	
 	// J'ajoute la balise "p" du nom a l'interieur du div cree precedemment
 	divObjet.appendChild(pNomObjet);
-	divObjet.appendChild(pType);
+	if(objet.type.nom != "undefined"){
+		pType.innerText = objet.type.nom;
+		divObjet.appendChild(pType);
+	}
+	
 	divObjet.appendChild(pValeurObjet);
 	divObjet.appendChild(pDateCreation);
 	divObjet.appendChild(pDateModification);
@@ -72,7 +84,7 @@ function afficherObjetBebe(container, objet) {
 	boutonSupprimer.type = "button";
 	boutonSupprimer.value = "Supprimer";
 	// La fonction supprimerContact sera appelee avec, en parametre, l'id du client concerne
-	boutonSupprimer.setAttribute("onclick", "supprimerClient("+objet.id+")");
+	boutonSupprimer.setAttribute("onclick", "supprimerObjetBebe("+objet.id+"); window.location.reload();");
 	
 	divObjet.appendChild(boutonSupprimer);
 	
@@ -98,12 +110,31 @@ function ajouterObjetBebe() {
 	 */
 	var inputNom = document.getElementById("nom_objet");
 	var type = document.getElementById("typeSelect").options[document.getElementById("typeSelect").selectedIndex].text;
-	console.log(type);
 	var valeur = document.getElementById("valeur")
+	if(type){
+		var params = "nom=" + inputNom.value + "&type=" + type.value + "&valeur=" +valeur.value;
+	}else{
+		var params = "nom=" + inputNom.value + "&valeur=" +valeur.value;
+	}
 	
-	var params = "nom=" + inputNom.value + "&type=" + type.value + "&valeur=" +valeur.value;
 	
 	request.open("POST", "http://localhost:8080/BudgetBB/budgetBB/objets", true);
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	request.send(params);
 }
+
+function supprimerObjetBebe(id){
+	var request = new XMLHttpRequest();
+	
+
+	request.onreadystatechange = function() {
+
+		if (request.readyState == 4 && request.status == 200) {
+
+			chargerObjetBebe();
+		}
+	};
+	request.open("DELETE", "http://localhost:8080/BudgetBB/budgetBB/objets/" + id , true);
+	request.send();
+
+	}
