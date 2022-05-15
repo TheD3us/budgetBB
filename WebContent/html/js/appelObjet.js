@@ -23,19 +23,14 @@ function chargerType(){
 	
 	request.onreadystatechange = function(){
 		if (request.readyState == 4 && request.status == 200){
-			var container = document.getElementById("typeSelect")
+			var container = document.getElementById("typeSelect");
+
 			var contenuReponse = JSON.parse(request.responseText);
 			for (i = 0; i < contenuReponse.length; i++) {
 				
 				remplirListeType(container, contenuReponse[i]);
 		}
-			var divOption = document.createElement('option');
-			var divInput = document.createElement('input');
-			divInput.type="text";
-			divInput.placeholder="Nouveau Type";
-			divOption.appendChild(divInput);
-			divOption.value = divInput.value;
-			container.appendChild(divOption);
+			
 	}
 }
 	request.open("GET", "http://localhost:8080/BudgetBB/budgetBB/types", true);
@@ -53,16 +48,16 @@ function remplirListeType(container, type){
 
 function afficherObjetBebe(container, objet) {
 	var divObjet = document.createElement("div");
-	var pNomObjet = document.createElement("p");
-	var pValeurObjet = document.createElement("p");
-	var pType = document.createElement("p");
+	var pNomObjet = document.createElement("input");
+	var pValeurObjet = document.createElement("input");
+	var pType = document.createElement("input");
 	var pDateCreation = document.createElement("p");
 	var pDateModification = document.createElement("p");
+	pNomObjet.setAttribute("id", "nom_objet" + objet.id);
+	pNomObjet.value = objet.nom;
+	pValeurObjet.setAttribute("id", "valeur" + objet.id);
 	
-	pNomObjet.innerText = objet.nom;
-
-	
-	pValeurObjet.innerText = objet.valeur + " euros";
+	pValeurObjet.value = Number.parseFloat(objet.valeur);
 	pDateCreation.innerText =  objet.dateCreation.dayOfMonth+ " " + objet.dateCreation.month + " " + objet.dateCreation.year ;
 	pDateModification.innerText = objet.dateModification.dayOfMonth + " " + objet.dateModification.month + " " + objet.dateModification.year;
 	
@@ -71,13 +66,21 @@ function afficherObjetBebe(container, objet) {
 	// J'ajoute la balise "p" du nom a l'interieur du div cree precedemment
 	divObjet.appendChild(pNomObjet);
 	if(objet.type.nom != "undefined"){
-		pType.innerText = objet.type.nom;
+		pType.setAttribute("id", "type" + objet.id);
+		pType.value = objet.type.nom;
 		divObjet.appendChild(pType);
 	}
 	
 	divObjet.appendChild(pValeurObjet);
 	divObjet.appendChild(pDateCreation);
 	divObjet.appendChild(pDateModification);
+	
+	var boutonModifier = document.createElement("input");
+	boutonModifier.type = "button";
+	boutonModifier.value = "Modifier";
+	boutonModifier.setAttribute("onclick", "modifierObjetBebe("+objet.id+"); window.location.reload();");
+	
+	divObjet.appendChild(boutonModifier);
 	
 	// Je cree un bouton que j'utiliserai pour la suppression
 	var boutonSupprimer = document.createElement("input");
@@ -138,3 +141,35 @@ function supprimerObjetBebe(id){
 	request.send();
 
 	}
+
+
+function modifierObjetBebe(id) {
+
+	var request = new XMLHttpRequest();
+	
+
+	request.onreadystatechange = function() {
+
+		if (request.readyState == 4 && request.status == 200) {
+
+			chargerObjetBebe();
+		}
+	};
+	
+	/*
+	 * Configuration puis envoi de la requete HTTP
+	 */
+	var inputNom = document.getElementById("nom_objet" + id);
+	var type = document.getElementById("type" + id);
+	var valeur = document.getElementById("valeur" + id)
+	if(type){
+		var params = "nom=" + inputNom.value + "&type=" + type.value + "&valeur=" +valeur.value;
+	}else{
+		var params = "nom=" + inputNom.value + "&valeur=" +valeur.value;
+	}
+	
+	
+	request.open("PUT", "http://localhost:8080/BudgetBB/budgetBB/objets/" + id, true);
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	request.send(params);
+}

@@ -145,11 +145,12 @@ public class ObjetPourBebeDAOjdbcImpl implements ObjetDAO {
 						// sinon si le type existe déjà on créer l'objet
 						if(current.getNom().equals(objet.getType().getNom()))
 						{
-							PreparedStatement ps2 = cnx.prepareStatement(" UPDATE objet_bb SET nom = ?, valeur = ?, date_modification =? WHERE id = ?;  ");
+							PreparedStatement ps2 = cnx.prepareStatement(" UPDATE objet_bb SET nom = ?, valeur = ?, type = ?, date_modification =? WHERE id = ?;  ");
 							ps2.setString(1, objet.getNom());
 							ps2.setDouble(2, objet.getValeur());
-							ps2.setDate(3, Date.valueOf(objet.getDateModification()));
-							ps2.setInt(4, current.getId() );
+							ps2.setInt(3, current.getId());
+							ps2.setDate(4, Date.valueOf(objet.getDateModification()));
+							ps2.setInt(5, objet.getId() );
 							
 							ps2.executeUpdate();
 							trouve = true;

@@ -36,9 +36,14 @@ public class ObjetPourBebeBll {
 		}
 		
 		public void update(ObjetPourBebe objet) {
+			
 			if(objet.getNom().length() > 50 && objet.getValeur() <= 0) {
 				return;
 			}
+			if(objet.getType().getNom().equals("")) {
+				objet.setType(null);
+			}
+			
 			dao.update(objet);
 		}
 		
