@@ -6,11 +6,17 @@ function chargerObjetBebe(){
 	request.onreadystatechange = function(){
 		if (request.readyState == 4 && request.status == 200){
 			var container = document.getElementById("ObjetBebeContainer")
+			var total = 0;
 			var contenuReponse = JSON.parse(request.responseText);
 			for (i = 0; i < contenuReponse.length; i++) {
 				
 				afficherObjetBebe(container, contenuReponse[i]);
+				total = total + Number.parseFloat(contenuReponse[i].valeur);
+				console.log(total);
 		}
+			var pTotal = document.createElement("p");
+			pTotal.innerText = "Total : " + total + " Euros";
+			container.appendChild(pTotal);
 	}
 }
 	request.open("GET", "http://localhost:8080/BudgetBB/budgetBB/objets", true);
@@ -18,7 +24,7 @@ function chargerObjetBebe(){
 }
 
 function chargerType(){
-	console.log("coucou");
+
 	var request = new XMLHttpRequest();
 	
 	request.onreadystatechange = function(){
@@ -29,7 +35,9 @@ function chargerType(){
 			for (i = 0; i < contenuReponse.length; i++) {
 				
 				remplirListeType(container, contenuReponse[i]);
+				
 		}
+			
 			
 	}
 }
@@ -47,6 +55,7 @@ function remplirListeType(container, type){
 
 
 function afficherObjetBebe(container, objet) {
+	
 	var divObjet = document.createElement("div");
 	var pNomObjet = document.createElement("input");
 	var pValeurObjet = document.createElement("input");
@@ -115,7 +124,7 @@ function ajouterObjetBebe() {
 	var type = document.getElementById("typeSelect").options[document.getElementById("typeSelect").selectedIndex].text;
 	var valeur = document.getElementById("valeur")
 	if(type){
-		var params = "nom=" + inputNom.value + "&type=" + type.value + "&valeur=" +valeur.value;
+		var params = "nom=" + inputNom.value + "&type=" + type + "&valeur=" +valeur.value;
 	}else{
 		var params = "nom=" + inputNom.value + "&valeur=" +valeur.value;
 	}

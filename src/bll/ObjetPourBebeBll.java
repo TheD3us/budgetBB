@@ -32,6 +32,9 @@ public class ObjetPourBebeBll {
 			{
 				return;
 			}
+			if(objet.getType().getNom().equals("") || objet.getType().getNom().equals("undefined")) {
+				objet.setType(null);
+			}
 			dao.insert(objet);
 		}
 		
@@ -40,7 +43,7 @@ public class ObjetPourBebeBll {
 			if(objet.getNom().length() > 50 && objet.getValeur() <= 0) {
 				return;
 			}
-			if(objet.getType().getNom().equals("")) {
+			if(objet.getType().getNom().equals("") || objet.getType().getNom().equals("undefined") ) {
 				objet.setType(null);
 			}
 			
