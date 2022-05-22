@@ -17,6 +17,7 @@ import bo.Type;
 
 @Path("/objets")
 public class ObjetPourBebeController {
+	
 	ObjetPourBebeBll objetBebe;
 	@GET
 	public List<ObjetPourBebe> getListObjetBebe() {

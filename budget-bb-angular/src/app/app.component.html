@@ -1,0 +1,15 @@
+<h2>Objets bébés :</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Valeur</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let objetBebe of objetsBebes$ | async">
+        <td>{{objetBebe.nom}}</td>
+        <td>{{objetBebe.valeur}}</td>
+    </tr>
+</tbody>
+</table>
