@@ -1,4 +1,4 @@
-package bo;
+package fr.d3us.bo;
 
 public class Type {
 

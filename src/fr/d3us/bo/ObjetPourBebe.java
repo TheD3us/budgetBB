@@ -1,6 +1,7 @@
-package bo;
+package fr.d3us.bo;
 
 import java.time.LocalDate;
+
 
 public class ObjetPourBebe {
 
