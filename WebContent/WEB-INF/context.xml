@@ -58,7 +58,7 @@
 		<property name="dataSource" ref="datasource" />
 
 		<!-- configurations pour preciser qu'on montre le SQL + qu'on travaille 
-			avec MySQL -->
+			avec PostgreSQL -->
 		<property name="hibernateProperties">
 	      	<props>
 	        	<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
