@@ -49,6 +49,8 @@
 	<bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<!-- Donner les packages qui contiennent les @Entity -->
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+  		<property name="persistenceUnitName" value="stadto"/>
 		<property name="packagesToScan">
 			<list>
 				<value>fr.d3us.bo</value>
@@ -59,12 +61,7 @@
 
 		<!-- configurations pour preciser qu'on montre le SQL + qu'on travaille 
 			avec PostgreSQL -->
-		<property name="hibernateProperties">
-	      	<props>
-	        	<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
-	        	<prop key="hibernate.show_sql">true</prop>
-	      	</props>
-    	</property>
+
 
 		<!-- facultatif, permet la creation auto des tables de la base de donnees -->
 		<property name="jpaProperties">
@@ -72,6 +69,12 @@
 				<prop key="hibernate.hbm2ddl.auto">create</prop> <!-- create, update, none -->
 			</props>
 		</property>
+	</bean>
+	
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		  <property name="showSql" value="true"/>
+		  <property name="generateDdl" value="true"/>
+		  <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQL82Dialect"/>
 	</bean>
 
 	<bean id="transactionManager"

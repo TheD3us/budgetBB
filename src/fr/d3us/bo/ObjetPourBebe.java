@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class ObjetPourBebe {
@@ -13,6 +14,8 @@ public class ObjetPourBebe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
+	
+	@ManyToOne
 	private Type type;
 	private double valeur;
 	private LocalDate dateCreation;
