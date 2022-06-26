@@ -2,11 +2,15 @@ package fr.d3us.bo;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+
 
 @Entity
 public class ObjetPourBebe {
@@ -15,43 +19,18 @@ public class ObjetPourBebe {
 	private int id;
 	private String nom;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="type")
 	private Type type;
 	private double valeur;
 	private LocalDate dateCreation;
 	private LocalDate dateModification;
+	private boolean active;
 	
 
 	public ObjetPourBebe() {
 		super();
 	}
-	
-	
-
-	
-	public ObjetPourBebe(String nom, Type type, double valeur, LocalDate dateModification) {
-		super();
-		this.nom = nom;
-		this.type = type;
-		this.valeur = valeur;
-		this.dateModification = dateModification;
-	}
-
-
-
-
-	public ObjetPourBebe(String nom, Type type, double valeur, LocalDate dateCreation,
-			LocalDate dateModification) {
-		super();
-		this.nom = nom;
-		this.type = type;
-		this.valeur = valeur;
-		this.dateCreation = dateCreation;
-		this.dateModification = dateModification;
-	}
-
-
-
 
 	public int getId() {
 		return id;
@@ -93,6 +72,16 @@ public class ObjetPourBebe {
 	public void setDateModification(LocalDate dateModification) {
 		this.dateModification = dateModification;
 	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
+	
 	
 	
 }
