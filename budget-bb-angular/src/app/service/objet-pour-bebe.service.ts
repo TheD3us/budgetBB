@@ -13,7 +13,7 @@ export class ObjetPourBebeService{
 
   public getAllObjetsBebe(): Observable<ObjetBebe[]> {
     return this.http.get<ObjetBebe[]>(
-      'http://localhost:8080/BudgetBB/budgetBB/objets');
+      'http://localhost:8080/BudgetBB/budgetBB/objetbebe');
   }
   
 }
