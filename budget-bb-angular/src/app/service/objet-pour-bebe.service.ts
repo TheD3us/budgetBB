@@ -13,10 +13,13 @@ export class ObjetPourBebeService{
 
   public getAllObjetsBebe(): Observable<ObjetBebe[]> {
     return this.http.get<ObjetBebe[]>(
-      'http://localhost:8080/BudgetBB/budgetBB/objetbebe');
+      'http://localhost:8080/BudgetBB/rest/objetbebe');
   }
   
+  public AddObjetBebe( objetbebe : Observable<ObjetBebe>): void {
+    this.http.post<ObjetBebe>(`http://localhost:8080/BudgetBB/rest/objetbebe`, objetbebe);
 
+  }
   
   
 }
