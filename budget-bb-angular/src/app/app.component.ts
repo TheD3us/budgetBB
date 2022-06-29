@@ -17,6 +17,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.objetsBebes$ = this.objetBebeService.getAllObjetsBebe();
-  }
+    
 
+  }
 }
