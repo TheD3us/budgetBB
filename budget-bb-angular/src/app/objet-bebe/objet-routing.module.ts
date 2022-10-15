@@ -4,8 +4,7 @@ import { ListObjetComponent } from "./list-objet/list-objet.component";
 
 const routes: Routes = [
 
-
-       { path: '**', component: ListObjetComponent}
+      { path: '**', component: ListObjetComponent}
 
      ];
    
