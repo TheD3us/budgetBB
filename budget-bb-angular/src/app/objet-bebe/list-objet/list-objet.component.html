@@ -7,10 +7,10 @@
         </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let objetBebe of objetsBebes$ | async">
-        <td>{{objetBebe.nom}}</td>
-        <td>{{objetBebe.valeur}}</td>
+    <tr *ngFor="let ObjetBebe of objetsBebes$ | async">
+        <td>{{ObjetBebe.nom}}</td>
+        <td>{{ObjetBebe.valeur}}</td>
     </tr>
     </tbody>
 </table>
-<app-add-objet></app-add-objet>
+<button [routerLink]="'/add'">Ajouter</button>

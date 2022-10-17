@@ -17,4 +17,6 @@ export class ListObjetComponent implements OnInit {
     this.objetsBebes$ = this.objetBebeService.getAllObjetsBebe();
   }
 
+  
+
 }

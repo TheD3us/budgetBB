@@ -4,6 +4,7 @@ import { ListObjetComponent } from './list-objet/list-objet.component';
 import { ObjetRoutingModule } from './objet-routing.module';
 import { AddObjetComponent } from './add-objet/add-objet.component';
 import { FormsModule } from '@angular/forms'; 
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     ObjetRoutingModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ]
 })
 export class ObjetBebeModule { }
