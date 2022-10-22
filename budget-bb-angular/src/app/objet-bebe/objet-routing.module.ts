@@ -5,7 +5,6 @@ import { ListObjetComponent } from "./list-objet/list-objet.component";
 
 const routes: Routes = [
 
-      { path: 'add', component : AddObjetComponent},
       { path: 'list', component : ListObjetComponent},
       { path: '**', component: ListObjetComponent}
       

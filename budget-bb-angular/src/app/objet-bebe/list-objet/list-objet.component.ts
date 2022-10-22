@@ -9,12 +9,12 @@ import { ObjetPourBebeService } from '../service/objet-pour-bebe.service';
   styleUrls: ['./list-objet.component.scss']
 })
 export class ListObjetComponent implements OnInit {
-  public objetsBebes$!: Observable<ObjetBebe[]>;
+  public tableauBebe! : ObjetBebe[];
   
   constructor(private objetBebeService : ObjetPourBebeService) { }
 
   ngOnInit(): void {
-    this.objetsBebes$ = this.objetBebeService.getAllObjetsBebe();
+    this.objetBebeService.getAllObjetsBebe().subscribe(tab => this.tableauBebe = tab);
   }
 
   

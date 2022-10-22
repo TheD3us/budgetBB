@@ -45,6 +45,7 @@ public class ObjetPourBebeController {
 	@PostMapping
 	public ResponseEntity<ObjetPourBebe> insert(@RequestBody ObjetPourBebe objetPourBebe) {
 		try {
+			System.out.println("Coucou je fonctionne");
 			bll.insert(objetPourBebe);
 			return new ResponseEntity<ObjetPourBebe>(objetPourBebe, HttpStatus.OK);
 		} catch (Exception e) {

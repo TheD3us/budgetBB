@@ -1,16 +1,20 @@
-<h2>Objets bébés :</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Valeur</th>
-        </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let ObjetBebe of objetsBebes$ | async">
-        <td>{{ObjetBebe.nom}}</td>
-        <td>{{ObjetBebe.valeur}}</td>
-    </tr>
-    </tbody>
-</table>
-<button [routerLink]="'/add'">Ajouter</button>
+<ng-container *ngIf="tableauBebe">
+    <h2>Objets bébés :</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Valeur</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ObjetBebe of tableauBebe">
+                <td>{{ObjetBebe.nom}}</td>
+                <td>{{ObjetBebe.valeur}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <app-add-objet [tableauBebe] = tableauBebe></app-add-objet>
+
+</ng-container>
