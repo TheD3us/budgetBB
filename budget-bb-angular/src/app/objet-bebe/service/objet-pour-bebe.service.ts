@@ -22,6 +22,6 @@ export class ObjetPourBebeService {
   }
 
   public SuppObjetBebe(id : number) : void {
-    this.http.delete('http://localhost:8080/BudgetBB/rest/objetbebe/' + id);
+    this.http.delete('http://localhost:8080/BudgetBB/rest/objetbebe/${id}').subscribe(a => {});
   }
 }

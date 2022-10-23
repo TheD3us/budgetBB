@@ -6,6 +6,9 @@ import { AddObjetComponent } from './add-objet/add-objet.component';
 import { FormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from '../app-routing.module';
 import { DeleteObjetComponent } from './delete-objet/delete-objet.component';
+import { CoreModule } from '../core/core.module';
+
+
 
 
 
@@ -19,7 +22,9 @@ import { DeleteObjetComponent } from './delete-objet/delete-objet.component';
     ObjetRoutingModule,
     CommonModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule
+    
   ]
 })
 export class ObjetBebeModule { }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { ObjetBebe } from 'src/app/entities/objet-pour-bebe';
 import { ObjetPourBebeService } from '../service/objet-pour-bebe.service';
+
 
 @Component({
   selector: 'app-list-objet',
@@ -16,7 +16,7 @@ export class ListObjetComponent implements OnInit {
   ngOnInit(): void {
     this.objetBebeService.getAllObjetsBebe().subscribe(tab => this.tableauBebe = tab);
   }
-
+  
   
 
 }
