@@ -19,8 +19,7 @@ export class DeleteObjetComponent implements OnInit {
 
   ngOnInit(): void {
     
-   const id = this.route.snapshot.paramMap.get('id');
-   console.log(id)
+   this.id = parseInt(this.route.snapshot.paramMap.get('id')!);
    const modalRef : NgbModalRef = this.modalService.open(ModalComponent);
    const componentInstance : ModalComponent = modalRef.componentInstance;
     componentInstance.confirmMessage = "Etes vous sur de vouloir supprimer la ressource ?";

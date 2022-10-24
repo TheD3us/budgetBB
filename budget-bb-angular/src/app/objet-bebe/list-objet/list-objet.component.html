@@ -12,6 +12,7 @@
                 <td>{{ObjetBebe.nom}}</td>
                 <td>{{ObjetBebe.valeur}}</td>
                 <td><button type="submit" [routerLink]="['/delete', ObjetBebe.id]">x</button></td>
+                <td><button type="submit" onclick="EnvoieObjet()">Modifier</button></td>
             </tr>
         </tbody>
     </table>
