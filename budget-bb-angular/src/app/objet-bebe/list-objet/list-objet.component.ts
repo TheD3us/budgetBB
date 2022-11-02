@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+
 import { ObjetBebe } from 'src/app/entities/objet-pour-bebe';
-import { AddObjetComponent } from '../add-objet/add-objet.component';
+
+
 import { ObjetPourBebeService } from '../service/objet-pour-bebe.service';
 
 
@@ -11,16 +13,18 @@ import { ObjetPourBebeService } from '../service/objet-pour-bebe.service';
 })
 export class ListObjetComponent implements OnInit {
   public tableauBebe! : ObjetBebe[];
+  @Output()
+  public objetDonne! : ObjetBebe;
   constructor(private objetBebeService : ObjetPourBebeService) { }
 
   ngOnInit(): void {
     this.objetBebeService.getAllObjetsBebe().subscribe(tab => this.tableauBebe = tab);
+
   }
   
   EnvoieObjet(objetBebe : ObjetBebe) : void {
+    this.objetDonne = objetBebe;
     
-    
-
   }
 
 }

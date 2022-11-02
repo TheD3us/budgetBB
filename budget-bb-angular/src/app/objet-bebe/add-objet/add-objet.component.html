@@ -1,12 +1,14 @@
 <form (submit)="ajoutObjet()">
+  <div (formGroup)="formDonne">
   <div class="form-group">
     <label for="nom">Nom</label>
-    <input [(ngModel)]="objetBebeAjout.nom" name="nom" type="text" class="form-control" id="nom">
+    <input [(ngModel)]="objetBebeAjout.nom" formControlname="nom" type="text" class="form-control" id="nom">
   </div>
   <div class="form-group">
     <label for="valeur">Valeur</label>
-    <input [(ngModel)]="objetBebeAjout.valeur" name="valeur" type="number" class="form-control" id="valeur">
+    <input [(ngModel)]="objetBebeAjout.valeur" formControlname="valeur" type="number" class="form-control" id="valeur">
   </div>
+</div>
   <button type="submit" class="btn btn-primary">Envoyer</button>
 
 </form>
