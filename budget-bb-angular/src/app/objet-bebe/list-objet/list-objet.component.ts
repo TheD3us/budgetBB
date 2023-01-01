@@ -22,9 +22,8 @@ export class ListObjetComponent implements OnInit {
 
   }
   
-  EnvoieObjet(objetBebe : ObjetBebe) : void {
-    this.objetDonne = objetBebe;
-    
+  EnvoieObjet(objetBebe : ObjetBebe) : ObjetBebe {
+    return this.objetDonne = objetBebe;
   }
 
 }

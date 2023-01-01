@@ -24,10 +24,13 @@ export class AddObjetComponent implements OnInit {
 
   ngOnInit(): void {
     this.objetBebeAjout = {} as ObjetBebe;
+    if (this.objetDonne !=  null)
+    {
     this.formDonne.patchValue({
       nom: this.objetDonne.nom,
       valeur:this.objetDonne.valeur
     })
+    } 
   }
   public ajoutObjet(): void {
     this.objetBebeService.AddObjetBebe(this.objetBebeAjout).subscribe(objetbebe => this.tableauBebe.push(objetbebe));
